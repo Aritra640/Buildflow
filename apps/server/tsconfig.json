@@ -1,3 +1,8 @@
 {
-  "extends": "@repo/typescript-config/backend.config"
+  "extends": "../../packages/typescript-config/backend.config.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
 }
+
