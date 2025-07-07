@@ -17,7 +17,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function DashboardPage() {
+export function DashboardPage() {
   const [theme, setTheme] = useRecoilState(ThemeAtom);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();

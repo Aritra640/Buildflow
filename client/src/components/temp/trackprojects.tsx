@@ -50,7 +50,7 @@ const projects = [
   }
 ];
 
-export default function TrackProjectsPage() {
+export function TrackProjectsPage() {
   const [theme, setTheme] = useRecoilState(ThemeAtom);
 
   return (

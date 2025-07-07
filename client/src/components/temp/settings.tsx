@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { Sun, Moon } from "lucide-react";
 import { ThemeAtom } from "../../store/atoms/themeAtom";
 
-export default function SettingsPage() {
+export function SettingsPage() {
   const [theme, setTheme] = useRecoilState(ThemeAtom);
 
   const toggleTheme = () => {

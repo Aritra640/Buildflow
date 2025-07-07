@@ -32,7 +32,7 @@ export default function HomePage() {
           Decentralized manufacturing and sourcing made seamless — from parts to full product assembly with milestone-based payments.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button className="text-lg px-6 py-3 flex items-center gap-2">
+          <Button onClick={()=>{navigate("/getstarted");}} className="text-lg px-6 py-3 flex items-center gap-2">
             <Sparkles size={20} /> Get Started
           </Button>
           <Button onClick={() => {navigate("/learnmore")}} variant="outline" className="text-lg px-6 py-3 flex items-center gap-2 font-semibold text-blue-600 border-blue-600 hover:bg-blue-50">
