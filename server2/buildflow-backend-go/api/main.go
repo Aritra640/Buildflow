@@ -10,6 +10,7 @@ import (
 	"github.com/Aritra640/buildflow-backend-go/internal/users"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 
@@ -27,6 +28,7 @@ func main() {
 	log.Println("config loaded!")
 
 	app := echo.New()
+	app.Use(middleware.CORS())
 
 	app.POST("/signin" , auth.SigninHandler)
 	app.POST("/signup" , users.AddUserHandler)
@@ -34,6 +36,7 @@ func main() {
 	app.GET("/getProductsExample" , products.GetProductExampleHandler)
 	app.POST("/addProduct" , products.AddProductsHandler)
 	app.DELETE("/deleteProduct" , products.DeleteProductHandler)
+	app.GET("/getUsername"  ,users.GetUserNameHandler , auth.AuthMiddleware)
 
 	log.Println("Starting server")
 	app.Logger.Fatal(app.Start(config.App.Port))
