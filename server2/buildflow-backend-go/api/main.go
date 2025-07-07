@@ -6,6 +6,7 @@ import (
 
 	"github.com/Aritra640/buildflow-backend-go/auth"
 	"github.com/Aritra640/buildflow-backend-go/config"
+	"github.com/Aritra640/buildflow-backend-go/internal/mail"
 	"github.com/Aritra640/buildflow-backend-go/internal/products"
 	"github.com/Aritra640/buildflow-backend-go/internal/users"
 	"github.com/joho/godotenv"
@@ -25,6 +26,8 @@ func main() {
 	config.App.Port = os.Getenv("PORT")
 	config.App.DBconn = os.Getenv("DATABASE")
 	config.App.Jwt = os.Getenv("JWT")
+	config.App.MailPassword = os.Getenv("MAILPASSWORD")
+	config.App.SMTP = os.Getenv("SMTP")
 	log.Println("config loaded!")
 
 	app := echo.New()
@@ -37,6 +40,7 @@ func main() {
 	app.POST("/addProduct" , products.AddProductsHandler)
 	app.DELETE("/deleteProduct" , products.DeleteProductHandler)
 	app.GET("/getUsername"  ,users.GetUserNameHandler , auth.AuthMiddleware)
+	app.GET("/sendmail" , mail.SendWishMailHandler)
 
 	log.Println("Starting server")
 	app.Logger.Fatal(app.Start(config.App.Port))
