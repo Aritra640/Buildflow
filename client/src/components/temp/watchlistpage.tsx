@@ -3,7 +3,7 @@ import { curuserAtom } from "../../store/atoms/curuserAtom";
 import { curemailAtom } from "../../store/atoms/curemailAtom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 export function WatchListPage() {
   const [user] = useRecoilState(curuserAtom);
@@ -11,15 +11,15 @@ export function WatchListPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user && email) {
-      axios
-        .post("http://localhost:8080/sendmail", {
-          username: user,
-          useremail: email,
-        })
-        .then((res) => console.log("Mail sent successfully", res.data))
-        .catch((err) => console.error("Error sending mail", err));
-    }
+    // if (user && email) {
+    //   axios
+    //     .post("http://localhost:8080/sendmail", {
+    //       username: user,
+    //       useremail: email,
+    //     })
+    //     .then((res) => console.log("Mail sent successfully", res.data))
+    //     .catch((err) => console.error("Error sending mail", err));
+    // }
     document.title = "BuildFlow - WatchList";
   }, [user,email]);
 

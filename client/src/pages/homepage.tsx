@@ -1,7 +1,6 @@
-
+import { Github, Sparkles, ArrowRight, Sun, Moon } from "lucide-react";
 import { useRecoilState } from "recoil";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Sun, Moon } from "lucide-react";
 import { ThemeAtom } from "../store/atoms/themeAtom";
 import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +15,18 @@ export default function HomePage() {
 
   return (
     <main
-      className={`min-h-screen w-full flex flex-col items-center justify-center px-6 py-12 transition-colors duration-500 
+      className={`relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-12 transition-colors duration-500 
         ${theme === "Dark" ? "bg-[#0a0a0a] text-white" : "bg-white text-gray-900"}`}
     >
+      {/* Top-right GitHub icon */}
+      <button
+        onClick={() => window.open("https://github.com/Aritra640/Buildflow", "_blank")}
+        aria-label="GitHub Repository"
+        className="absolute top-4 right-4 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors"
+      >
+        <Github size={28} />
+      </button>
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,13 +37,25 @@ export default function HomePage() {
           BuildFlow
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mb-8">
-          Decentralized manufacturing and sourcing made seamless — from parts to full product assembly with milestone-based payments.
+          Decentralized manufacturing and sourcing made seamless — from parts to
+          full product assembly with milestone-based payments.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button onClick={()=>{navigate("/getstarted");}} className="text-lg px-6 py-3 flex items-center gap-2">
+          <Button
+            onClick={() => {
+              navigate("/getstarted");
+            }}
+            className="text-lg px-6 py-3 flex items-center gap-2"
+          >
             <Sparkles size={20} /> Get Started
           </Button>
-          <Button onClick={() => {navigate("/learnmore")}} variant="outline" className="text-lg px-6 py-3 flex items-center gap-2 font-semibold text-blue-600 border-blue-600 hover:bg-blue-50">
+          <Button
+            onClick={() => {
+              navigate("/learnmore");
+            }}
+            variant="outline"
+            className="text-lg px-6 py-3 flex items-center gap-2 font-semibold text-blue-600 border-blue-600 hover:bg-blue-50"
+          >
             Learn More <ArrowRight size={20} />
           </Button>
           <Button
@@ -43,7 +63,8 @@ export default function HomePage() {
             variant="outline"
             className="text-lg px-6 py-3 flex items-center gap-2 font-semibold text-purple-600 border-purple-600 hover:bg-purple-50"
           >
-            {theme === "Dark" ? <Sun size={20} /> : <Moon size={20} />} Toggle Theme
+            {theme === "Dark" ? <Sun size={20} /> : <Moon size={20} />} Toggle
+            Theme
           </Button>
         </div>
       </motion.div>
@@ -82,9 +103,19 @@ export default function HomePage() {
         ))}
       </motion.div>
 
-      <footer className="mt-24 text-center text-sm opacity-50">
+      <footer className="mt-24 text-center text-sm opacity-50 flex items-center justify-center gap-2">
         © {new Date().getFullYear()} BuildFlow Inc. All rights reserved.
+        <button
+          onClick={() =>
+            window.open("https://github.com/Aritra640/Buildflow", "_blank")
+          }
+          aria-label="GitHub Repo"
+          className="hover:opacity-80 transition-opacity"
+        >
+          <Github size={18} />
+        </button>
       </footer>
     </main>
   );
 }
+
