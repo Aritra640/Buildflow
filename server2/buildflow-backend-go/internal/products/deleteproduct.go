@@ -8,6 +8,7 @@ import (
 	"github.com/Aritra640/buildflow-backend-go/config"
 	"github.com/Aritra640/buildflow-backend-go/internal/database/db"
 	"github.com/labstack/echo/v4"
+	_ "github.com/lib/pq"
 )
 
 type DeleteProductParam struct {
@@ -35,6 +36,6 @@ func DeleteProductHandler(c echo.Context) error {
 	}
 
 	queryobj := db.New(pg)
-	queryobj.DeleteProductByID(context.Background() , int32(req.Id))
-	return c.JSON(200 , "product deleted")
+	queryobj.DeleteProductByID(context.Background(), int32(req.Id))
+	return c.JSON(200, "product deleted")
 }

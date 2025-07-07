@@ -15,7 +15,6 @@ type AddUserParam struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
-	AvatarUrl   string `json:"avatar_url"`
 }
 
 // Add user handler
@@ -46,7 +45,7 @@ func AddUserHandler(c echo.Context) error {
 		Password: req.Password,
 		AvatarUrl: sql.NullString{
 			Valid: true,
-			String: req.AvatarUrl,
+			String: "dummy-url",
 		},
 	})
 
